@@ -5,10 +5,11 @@ import { TextField } from '@material-ui/core';
 
 export default function InputField(props) {
   const { ...rest } = props;
-  console.log(rest);
   const [field, meta] = useField(props);
   function _renderHelperText() {
-    const [touched, error] = at(meta, 'touched', 'error');
+    // const [touched, error] = at(meta, 'touched', 'error');refactored this line with pure js in below line
+    const touched = meta.touched;
+    const error = meta.error;
     if (touched && error) {
       return error;
     }

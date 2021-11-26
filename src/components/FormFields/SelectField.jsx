@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { at } from 'lodash';
+// import { at } from 'lodash';
 import { useField } from 'formik';
 import {
   InputLabel,
@@ -14,7 +14,10 @@ function SelectField(props) {
   const { label, data, ...rest } = props;
   const [field, meta] = useField(props);
   const { value: selectedValue } = field;
-  const [touched, error] = at(meta, 'touched', 'error');
+  // const [touched, error] = at(meta, 'touched', 'error'); // refactored this line with pure js in below line
+  const touched = meta.touched;
+  const error = meta.error;
+
   const isError = touched && error && true;
   function _renderHelperText() {
     if (isError) {
